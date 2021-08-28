@@ -7,8 +7,14 @@ edition = "2018"
 
 [dependencies]
 cc = "1.0.69"
-cxx = "1.0"
 
 [build-dependencies]
-cxx-build = "1.0"
 cc = "1.0.69"
+
+[lib]
+name = "scrypt"
+path = "src/lib.rs"
+
+[[bin]]
+name = "scrypt"
+path = "src/bin.rs"

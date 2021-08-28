@@ -32,10 +32,14 @@ console.log("Reading and modifying node.gyp...");
 const raw_gyp = fs.readFileSync(`${NODE_PATH}/node.gyp`, { encoding: "utf8" });
 const gyp = parse(raw_gyp);
 
-const cpp_source_list = gyp.targets.find(
+const targets = gyp.targets.find(
   (t) => t.target_name === "<(node_lib_target_name)"
-).sources;
+)
+const cpp_source_list = targets.sources;
 
+const win = targets.conditions.find(cond => cond[0] == 'OS=="win"');
+
+win[1].libraries.push("Winmm")
 cpp_source_list.push("src/nodec.cc", "src/nodec.h");
 
 const serialized = JSON.stringify(gyp, null, 2);
