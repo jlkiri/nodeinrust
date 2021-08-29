@@ -1,8 +1,3 @@
-const hello = "Hello"
-const world = " world!"
-
-function helloWorld() {
-    return hello + world
-}
+import { helloWorld } from "./func.js"
 
 console.log(helloWorld())

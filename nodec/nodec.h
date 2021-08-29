@@ -1,9 +1,9 @@
-#ifndef SRC_NODE_EXT_H_
-#define SRC_NODE_EXT_H_
+#ifndef SRC_NODE_C_API_H_
+#define SRC_NODE_C_API_H_
 
 extern "C"
 {
-  int execute_node(char *code);
+  int execute_js_file(char *code);
 }
 
 #endif

@@ -147,9 +147,9 @@ int RunNodeInstance(MultiIsolatePlatform *platform,
 
 extern "C"
 {
-  int execute_node(char *code)
+  int execute_js_file(char *code)
   {
-    char *args[] = {"obelisk", code};
+    char *args[] = {"nodeinrust", code};
     return node_main(2, args);
   }
 }

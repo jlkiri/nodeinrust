@@ -1,19 +1,16 @@
-use scrypt::execute_node;
-use std::{ffi::CString, fs, path::PathBuf};
+use scrypt::execute_js_file;
+use std::{ffi::CString};
 
 fn main() {
-    //let path = PathBuf::from("./node/out/Release");
-    //let libpath = fs::canonicalize(path).expect("efef");
-    //println!(
-    //    "cargo:rustc-link-search={}",
-    //    libpath.to_str().expect("Bad path")
-    //);
-
-    let args: Vec<String> = std::env::args().collect();
-    let filepath = CString::new(args[1].clone()).expect("CString failed");
+    let arg = std::env::args().nth(1).unwrap_or_else(|| {
+        println!("Usage: nodeinrust FILE");
+        std::process::exit(1);
+    });
+    let filepath = CString::new(arg).expect("Invaid CString");
     let ptr = filepath.into_raw();
+
     unsafe {
-        execute_node(ptr);
+        execute_js_file(ptr);
         let _ = CString::from_raw(ptr);
     }
 }
