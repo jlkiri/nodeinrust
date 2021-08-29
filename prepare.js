@@ -37,9 +37,9 @@ const targets = gyp.targets.find(
 )
 const cpp_source_list = targets.sources;
 
-const win = targets.conditions.find(cond => cond[0] == 'OS=="win"');
+// const win = targets.conditions.find(cond => cond[0] == 'OS=="win"');
 
-win[1].libraries.push("Winmm")
+// win[1].libraries.push("Winmm")
 cpp_source_list.push("src/nodec.cc", "src/nodec.h");
 
 const serialized = JSON.stringify(gyp, null, 2);
